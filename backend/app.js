@@ -6,9 +6,18 @@ const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
-app.use(cors({ origin: "http://54.183.170.217:3000", credentials: true }));
+app.use(
+  cors({
+    origin:
+      "http://202projectloadbalancer-1749771366.us-west-1.elb.amazonaws.com",
+    credentials: true,
+  })
+);
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "http://54.183.170.217:3000");
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "http://202projectloadbalancer-1749771366.us-west-1.elb.amazonaws.com"
+  );
   res.setHeader("Access-Control-Allow-Credentials", "true");
   res.setHeader(
     "Access-Control-Allow-Methods",
