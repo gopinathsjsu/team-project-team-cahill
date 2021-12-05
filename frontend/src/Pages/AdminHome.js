@@ -23,8 +23,6 @@ export default class SearchFlight extends Component {
       mileage: "",
       flightData: [],
     };
-    // const [date, setDate] = useState(new Date());
-    // const [flightData, setFlightData] = useState([]);
   }
 
   flightNumberHandler = (e) => {
@@ -76,22 +74,12 @@ export default class SearchFlight extends Component {
   };
 
   addFlight = (e) => {
-    // console.log("inside signup");
     e.preventDefault();
     axios
       .post(`${serverUrl}/api/addflight`, this.state)
       .then((response) => {
         console.log(response);
-        //    const { password, ...user } = response.data
         if (response.status === 200) {
-          //  const CustomToast = ({closeToast})=>{
-          //    return(
-          //      <div  style={{textAlign:"center"}}>
-          //        <h4>Successfully Created Account!</h4>
-          //      </div>
-          //    )
-          //  }
-          //  toast.success(<CustomToast />, {position: toast.POSITION.TOP_CENTER, autoClose:true})
         }
         this.setState({
           flightNumber: "",
@@ -106,18 +94,15 @@ export default class SearchFlight extends Component {
       })
       .catch((err) => {
         console.log(err);
-        //  toast.error("Unable to add flights using these details", {position: toast.POSITION.TOP_CENTER});
       });
   };
 
   getFlight = () => {
     console.log("inside getflight");
-    // e.preventDefault();
     axios
       .get(`${serverUrl}/api/getAllFlight`, this.state)
       .then((response) => {
         console.log(response.data);
-        //    const { password, ...user } = response.data
         this.setState({
           flightData: response.data.flightExists,
         });
@@ -125,7 +110,6 @@ export default class SearchFlight extends Component {
       })
       .catch((err) => {
         console.log(err);
-        //  toast.error("Unable to add flights using these details", {position: toast.POSITION.TOP_CENTER});
       });
   };
 
@@ -153,29 +137,10 @@ export default class SearchFlight extends Component {
   };
 
   render() {
-    // const user = Cookies.get('Role')
-    // if (user) {
-    //     if (user === "Customer") {
-    //         window.location.replace('/searchflight')
-    //     }
-    //     else if (user === "Admin") {
-    //         window.location.replace('/adminhome')
-    //     }
-    // }
-    // this.getFlight();
     const { flightData, phone, email, password } = this.state;
     let redirectVar = null;
     const data = this.state.flightData;
     let message = "";
-    // const CustomField = ({})=>{
-    //   return(
-    //     <Row style={{ paddingTop: "5%", borderLeft: "0" }}>
-    //       {((this.state.flightData).map)((items) => {
-    //         <FlightCard id={items}/>
-    //       })}
-    //     </Row>
-    //   )
-    // }
     return (
       <div>
         {redirectVar}
@@ -317,9 +282,6 @@ export default class SearchFlight extends Component {
                   Add Flight
                 </Button>
                 &nbsp;&nbsp;
-                {/* <div style={{marginTop:"10px"}}>
-                        <p className="display--inline">Already have an account? <a className="login-a" href="/login">Login</a></p>
-                    </div> */}
               </Form>
             </Col>
             <Col xs lg="2">
@@ -379,26 +341,6 @@ export default class SearchFlight extends Component {
             </Row>
           );
         })}
-
-        {/* <table>
-            { (flightData) && (typeof flightData)==="object"?
-              {(flightData).map((item =>
-              <tr key={item.flightNumber}>{item.departureAirport}</tr>
-              ))}
-              :null
-            } 
-            </table> */}
-
-        {/* {flightData && typeof flightData==="object"?
-            <Row>
-              {flightData.map((items) => {
-                {items.flightNumber}
-              })}
-            </Row>
-            :null} */}
-        {/* {this.getFlight()} */}
-
-        {/* <CustomField/> */}
       </div>
     );
   }

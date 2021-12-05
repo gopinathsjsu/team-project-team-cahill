@@ -26,7 +26,6 @@ export default class Signup extends Component {
     signUp = (e) => {
         console.log("inside signup");
         e.preventDefault();
-        // send POST request to "/signup"
            axios.post(`${serverUrl}/api/signup`, this.state)
              .then((response) => {
                console.log(response)
@@ -93,14 +92,6 @@ export default class Signup extends Component {
         const { name, phone, email, password } = this.state;
         let redirectVar = null;
         let message = '';
-        // if (this.props.user.message === 'NEW_USER_CREATED' && this.state.signUp) {
-        // // alert('You have registered successfully');
-        // localStorage.setItem('name', this.props.user.name);
-        // localStorage.setItem('idToken', this.props.user.idToken);
-        // redirectVar = <Navigate to="/home" />;
-        // } else if (this.props.user.message === 'USER_ALREADY_EXISTS' && this.state.signUp) {
-        //     message = 'User with email id is already registered';
-        // }
         return (
             <div>
         {redirectVar}
@@ -178,13 +169,6 @@ export default class Signup extends Component {
                     Please enter a valid password.
                   </Form.Control.Feedback>
                 </Form.Group>
-
-                {/* <h6 style={{ marginTop: "10px" }} className="h5 mb-3 font-weight-normal signin">Sign in as</h6>
-                    <select onChange={this.roleChangeHandler} id="options">
-                        <option value="Customer">Customer</option>
-                        <option value="Admin">Admin</option>
-                    </select>
-                <br/> */}
 
                 <Button style={{backgroundColor: "#ADD8E6" , marginTop:"20px"}} type="submit">
                   Signup

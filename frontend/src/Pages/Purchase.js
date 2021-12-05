@@ -24,7 +24,6 @@ export default class Purchase extends Component {
       name:localStorage.getItem('name'),
       booking:'',
     };
-    // this.props.getUser();
   }
   state = {
     loading: false
@@ -42,7 +41,6 @@ export default class Purchase extends Component {
         removeCb(params.row, params.number)
       }
       await new Promise(resolve => setTimeout(resolve, 750))
-      // console.log(`Added seat ${number}, row ${row}, id ${id}`);
       const newTooltip = `Reserved the seat ${number}, row ${row} by ${this.state.name} `;
       addCb(row, number, id, newTooltip);
       this.setState({
@@ -71,7 +69,6 @@ export default class Purchase extends Component {
     }, async () => {
       await new Promise(resolve => setTimeout(resolve, 1500))
       console.log(`Removed seat ${number}, row ${row}, id ${id}`)
-      // A value of null will reset the tooltip to the original while '' will hide the tooltip
       const newTooltip = ['A', 'B', 'C'].includes(row) ? null : ''
       removeCb(row, number, newTooltip)
       this.setState({ loading: false })
@@ -81,7 +78,6 @@ export default class Purchase extends Component {
   onPurchase=(e)=>{
     console.log("inside purchase");
     e.preventDefault();
-    // send POST request to "/signup"
        axios.post(`${serverUrl}/api/purchase`, this.state)
          .then((response) => {
            console.log(response)
@@ -107,10 +103,6 @@ export default class Purchase extends Component {
     
     const {loading} = this.state;
     let redirectVar = null;
-    // if (this.state.message === 'PROFILE_UPDATE_SUCCESS') {
-    //   localStorage.setItem('name', this.props.user.name);
-    //   redirectVar = <Navigate to="/home" />;
-    // }
     return (
       <div>
         {redirectVar}
@@ -126,7 +118,6 @@ export default class Purchase extends Component {
                       name="email"
                       type="email"
                       value={this.state.email}
-                      // onChange={this.onChange}
                       required
                     />
                     <Form.Control.Feedback type="invalid">
@@ -142,7 +133,6 @@ export default class Purchase extends Component {
                       name="flightNumber"
                       type="text"
                       value={this.state.flightNumber}
-                      // onChange={this.onChange}
                       required
                     />
                     <Form.Control.Feedback type="invalid">
@@ -175,7 +165,6 @@ export default class Purchase extends Component {
           </Row>
         </div>
         <div>
-        
       </div>
       </div>
       

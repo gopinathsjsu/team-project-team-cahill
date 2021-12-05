@@ -20,7 +20,6 @@ export default class Profile extends Component {
       phone: localStorage.getItem("phone"),
       mileage: localStorage.getItem("mileage"),
     };
-    // this.props.getUser();
   }
 
   componentDidMount() {
@@ -88,24 +87,8 @@ export default class Profile extends Component {
     } else {
       e.preventDefault();
       const data = this.state.file;
-      //   this.props.updateUserImage(data);
     }
   };
-
-  // onSave = (e) => {
-  //   const form = e.currentTarget;
-  //   if (form.checkValidity() === false) {
-  //     e.preventDefault();
-  //     e.stopPropagation();
-  //     this.setState({
-  //       validated: true,
-  //     });
-  //   } else {
-  //     e.preventDefault();
-  //     const data = { ...this.state };
-  //   //   this.props.updateUser(data);
-  //   }
-  // }
 
   onSave = (e) => {
     const form = e.currentTarget;
@@ -118,7 +101,6 @@ export default class Profile extends Component {
     } else {
     e.preventDefault();
     console.log(this.state.email);
-    //send POST request to "/login"
     const { email, name, phone } = this.state
    axios.put(`${serverUrl}/api/profile`, this.state)
        .then((response) => {
@@ -126,19 +108,15 @@ export default class Profile extends Component {
            const { password, ...user } = response.data
 
           if (response.status === 200) {
-            // localStorage.removeItem('idToken');
             localStorage.removeItem("name");
             localStorage.removeItem("phone");
             localStorage.removeItem("mileage");
             localStorage.removeItem("user");
-            // localStorage.setItem("idToken", response.data.idToken)
             localStorage.setItem("name", response.data.name);
             localStorage.setItem("phone", response.data.phone);
             localStorage.setItem("mileage", response.data.mileage);
             localStorage.setItem("user", JSON.stringify(user));
             window.location.href = "/searchflight";
-            //    const navigate  = useNavigate();
-            //    navigate('/profile');
           } else if (response.status === 404) {
             toast.error("User Profile not found", {
               position: toast.POSITION.TOP_CENTER,
@@ -155,20 +133,8 @@ export default class Profile extends Component {
   };
 
   render() {
-    // this.persist();
     let redirectVar = null;
-    // if (this.state.message === 'PROFILE_UPDATE_SUCCESS') {
-    //   localStorage.setItem('name', this.props.user.name);
-    //   redirectVar = <Navigate to="/home" />;
-    // }
-    // let image = null;
     let filename = "Select image file";
-    // if (this.props.user.message === 'PROFILE_UPDATE_IMAGE_SUCCESS') {
-    //   filename = 'Select image file';
-    // }
-    // if (this.state.image) {
-    //   image = this.state.image;
-    // }
     return (
       <div>
         {redirectVar}
@@ -186,29 +152,6 @@ export default class Profile extends Component {
                     <Image style={{ width: "12rem" }} src={image} />
                   </Form.Group>
                 </Form.Row>
-                {/* <Form.Row>
-                  <Form.Group as={Col} md={3}>
-                    <Form.File
-                      className="mt-3"
-                      name="image"
-                      id="image"
-                      style={{ width: '15rem' }}
-                      accept="image/*"
-                      label={filename}
-                      onChange={this.onAvatarChange}
-                      custom
-                      required
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      Please upload valid profile picture.
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                </Form.Row>
-                <Form.Row>
-                  <Form.Group as={Col} md={3} className="d-flex" style={{ justifyContent: 'flex-end' }}>
-                    <Button type="submit">Upload</Button>
-                  </Form.Group>
-                </Form.Row> */}
               </Form>
             </Col>
 
@@ -241,7 +184,6 @@ export default class Profile extends Component {
                       name="email"
                       type="email"
                       value={this.state.email}
-                      // onChange={this.onChange}
                       required
                     />
                     <Form.Control.Feedback type="invalid">
@@ -292,15 +234,3 @@ export default class Profile extends Component {
     );
   }
 }
-
-// Profile.propTypes = {
-//   getUser: PropTypes.func.isRequired,
-//   updateUser: PropTypes.func.isRequired,
-//   updateUserImage: PropTypes.func.isRequired,
-// };
-
-// // const mapState = (state) => ({
-// //   user: state.userProfile.user,
-// // });
-
-// // export default connect(mapState, { getUser, updateUser, updateUserImage })(Profile);

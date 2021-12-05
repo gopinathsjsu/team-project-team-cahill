@@ -6,8 +6,6 @@ import NavBar from './NavBar.js';
 import { useNavigate } from 'react-router-dom';
 import { serverUrl } from "../Pages/ServerUrl";
 
-// import { Navbar } from 'react-bootstrap';
-
 export default class Login extends Component {
   constructor(props) {
     super(props);
@@ -21,7 +19,6 @@ export default class Login extends Component {
   handleLogin = (e) => {
     e.preventDefault();
     console.log(this.state.email);
-    //send POST request to "/login"
     const { email, password, role } = this.state;
     axios
       .post(serverUrl+'/api/login', this.state)
@@ -43,8 +40,6 @@ export default class Login extends Component {
             localStorage.setItem('user', JSON.stringify(user));
             Cookies.set('Role', 'Customer');
             window.location.href = '/searchflight';
-            //    const navigate  = useNavigate();
-            //    navigate('/profile');
           } else if (role === 'Admin' && user.role === 'Admin') {
             localStorage.setItem(
               'idToken',
@@ -54,7 +49,6 @@ export default class Login extends Component {
             localStorage.setItem('user', JSON.stringify(user));
             Cookies.set('Role', 'Admin');
             window.location.href = '/adminhome';
-            //    this.props.history.push('/adminHome');
           } else {
             toast.error("You're signing in with incorrect role", {
               position: toast.POSITION.TOP_CENTER,
@@ -96,15 +90,6 @@ export default class Login extends Component {
     });
   };
   render() {
-    // const user = Cookies.get('Role')
-    // if (user) {
-    //     if (user === "Customer") {
-    //         window.location.replace('/CustomerHome')
-    //     }
-    //     else if (user === "Admin") {
-    //         window.location.replace('/adminHome')
-    //     }
-    // }
     return (
       <div>
         <NavBar />

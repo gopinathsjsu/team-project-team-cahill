@@ -5,7 +5,6 @@ import {
 import { Link } from 'react-router-dom';
 import Logo from '../images/airplane-takeoff.svg';
 import Cookies from 'js-cookie'
-// import { userLogout } from '../../actions/account/loginUserAction';
 
 export default class NavBar extends Component {
   constructor() {
@@ -15,7 +14,6 @@ export default class NavBar extends Component {
     };
   }
 
-  // handle logout to destroy the cookie
   handleLogout = () => {
     localStorage.removeItem('idToken');
     localStorage.removeItem('name');
@@ -25,13 +23,11 @@ export default class NavBar extends Component {
     localStorage.removeItem('mileage');
     localStorage.removeItem('id');
     Cookies.remove('Role');
-    // this.props.userLogout();
   };
 
   render() {
     let navUser = null;
     let nameDropDown = null;
-    // let navLocation = null;
     nameDropDown = (
       <Dropdown>
         <Dropdown.Toggle style={{backgroundColor: '#C0C0C0'}} variant="light" id="dropdown-basic">
@@ -73,10 +69,6 @@ export default class NavBar extends Component {
             </Link>
           </Navbar.Brand>
           <h3>Cahill Airlines</h3>
-          {/* <Nav className="mr-auto" />
-          <Nav.Item className="btn" style={{'background-color': '',"margin-right": "15px","border-radius": "5px"}} variant="light"><Link to="/searchflight">Search Flight</Link></Nav.Item>
-          <Nav.Item className="btn" style={{'background-color': '',"margin-right": "15px","border-radius": "5px"}} variant="light"><Link to="/booking">My Booking</Link></Nav.Item>
-          <Nav.Item className="btn" style={{'background-color': '',"margin-right": "15px","border-radius": "5px"}} variant="light"><Link to="/profile">Profile Page</Link></Nav.Item> */}
           <Nav.Item><Nav.Link>{nameDropDown}</Nav.Link></Nav.Item>
         </div>
       );
@@ -92,8 +84,6 @@ export default class NavBar extends Component {
           </Navbar.Brand>
           <h3>Cahill Airlines</h3>
           <Nav className="mr-auto" />
-          {/* <Nav.Item className="btn" style={{'background-color': '#C0C0C0',marginRight: "15px","border-radius": "5px"}} variant="light"><Link to="/login">Login</Link></Nav.Item>
-          <Nav.Item className="btn" style={{'background-color': '#C0C0C0',marginRight: "15px","border-radius": "5px"}} variant="light"><Link to="/signup">Sign Up</Link></Nav.Item> */}
         </div>
       );
     }
@@ -113,4 +103,3 @@ export default class NavBar extends Component {
     );
   }
 }
-// export default connect(null, { userLogout })(NavBar);
