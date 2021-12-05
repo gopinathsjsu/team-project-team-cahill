@@ -8,7 +8,6 @@ const User = require('../models/UserModel');
 const router = express.Router();
 
 router.post("/", async (req, res) => {
-    // console.log(req.body);
     const userExists = await User.findOne({ email: req.body.email });
     if (userExists) {
       res.status = 400;

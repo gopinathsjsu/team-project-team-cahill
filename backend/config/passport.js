@@ -4,11 +4,7 @@ const JwtStrategy = require('passport-jwt').Strategy;
 const { ExtractJwt } = require('passport-jwt');
 const passport = require('passport');
 const config = require('./config');
-const kafka = require('../kafka/client');
 
-const {PASSPORTHANDLER}=require('../kafka/topics');
-
-// Setup work and export for the JWT passport strategy
 function auth() {
   const opts = {
     // jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),

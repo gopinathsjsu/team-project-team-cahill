@@ -8,7 +8,6 @@ const Flight = require('../models/FlightModel');
 const router = express.Router();
 
 router.get("/", (req, res) => {
-    // console.log(req.body);
     Flight.find({})
     .then((flightExists)=>{
     if (!flightExists) {
@@ -28,7 +27,6 @@ router.get("/", (req, res) => {
               message: "FLIGHT_LIST",
             })
           );
-        //   console.log("check after save",res.data);
       } 
     }).catch( (e) =>{
         res.status = 400;

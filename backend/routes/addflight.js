@@ -38,7 +38,6 @@ router.post("/", (req, res) => {
               message: "NEW_FLIGHT_CREATED",
             })
           );
-        //   console.log("check after save",res.data);
       } 
     }).catch( (e) =>{
         res.status = 400;

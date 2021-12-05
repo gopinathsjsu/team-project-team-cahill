@@ -40,12 +40,6 @@ const flightsSchema = new Schema(
       type: Number,
       default: 100,
     },
-    //   booking: [Schema.Types.ObjectId],
-    //   memberships: [Schema.Types.ObjectId],
-    //   booking: [{
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'booking',
-    //   }],
   },
   {
     versionKey: false,
